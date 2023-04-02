@@ -1,0 +1,50 @@
+import java.util.*;
+class Dep{
+    public static int deposit(){
+        int amount = 0;
+        final int minbet = 10;
+        final int maxbet = 100;
+
+        while (amount < minbet || amount > maxbet){
+            Scanner sc = new Scanner(System.in);
+            System.out.print("What would you like to deposit: $");
+            amount = sc.nextInt();
+            if (amount >= minbet && amount <= maxbet){
+                break;
+            }
+            else{
+                System.out.printf("Enter a valid amount between $%d and $%d \n",minbet,maxbet);
+            }
+        }
+        return amount;
+    }
+}
+
+class Bet extends Dep{
+    public static int getlines(){
+        final int MAX_LINES = 3;
+        int lines =0;
+        while(lines==0 || lines> MAX_LINES){
+            Scanner sa = new Scanner(System.in);
+            System.out.printf("How many lines you want to bet on? ");
+            lines = sa.nextInt();
+            if (lines >= 0 && lines <= MAX_LINES){
+                break;
+            }
+            else{
+                System.out.printf("Enter value between $%d and $%d \n",0,MAX_LINES);
+            }
+        }
+        return lines;
+    }
+}
+
+
+public class Main extends Bet{
+    public static void main(String[] args) {
+        Main obj = new Main();
+        obj.deposit();
+        obj.getlines();
+
+    }
+}
