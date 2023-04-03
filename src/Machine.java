@@ -61,6 +61,13 @@ class Getbetline extends Bet{
     } 
 }
 
+class spin_machine extends Getbetline{
+    public static int spin(){
+        return 0; 
+        //logic building in progress...
+    }
+}
+
 public class Machine extends Getbetline{
     public static void main(String[] args) {
         Machine obj = new Machine();
