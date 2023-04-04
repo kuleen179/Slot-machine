@@ -7,7 +7,7 @@ class Finals{
 class Dep extends Finals{
     public static int deposit(){
         int amount = 0;
-        while (amount < minbet || amount > maxbet){
+        while (true){
             Scanner sc = new Scanner(System.in);
             System.out.print("What would you like to deposit: $");
             amount = sc.nextInt();
@@ -33,7 +33,7 @@ class Bet extends Dep{
                 break;
             }
             else{
-                System.out.printf("Enter value between $%d and $%d \n",0,MAX_LINES);
+                System.out.printf("Enter value between %d and %d \n",1,MAX_LINES);
             }
         }
         return lines;
@@ -51,26 +51,42 @@ class Getbetline extends Bet{
             online = sb.nextInt();
             int ota = online*line;
             if(ota < amt){
-                System.out.printf("You are betting $%d on each line is and your total bet is $%d.",online,ota);
+                System.out.printf("You are betting $%d on each line and your total bet is $%d. \n",online,ota);
                 return online;
             }
             else{
-                System.out.printf("You don't have enough balance to bet. Yur current balance is $%d \n",amt);
+                System.out.printf("You don't have enough balance to bet. Your current balance is $%d \n",amt);
             }
         }
     } 
 }
 
-class spin_machine extends Getbetline{
-    public static int spin(){
-        return 0; 
-        //logic building in progress...
+class SpinMachine extends Getbetline{
+    public static void spin(){
+        int[] al = {1,2,3,4};
+        int[][] digits = new int[3][3];
+        int index = -1;
+        for(int row=0; row<3;row++){
+            index++;
+            for(int col=0;col<3;col++){
+                digits[row][col] = al[index];
+            }
+        }
+        System.out.println("Spin");
+        for(int row =0; row<3;row++){
+            for (int col =0;col<3;col++){
+            System.out.print(digits[row][col]+" ");
+            }
+        System.out.println();
+        }
     }
 }
 
-public class Machine extends Getbetline{
+
+public class Machine extends SpinMachine{
     public static void main(String[] args) {
         Machine obj = new Machine();
         obj.getonline();
+        obj.spin();
     }
 }
